@@ -1,0 +1,13 @@
+*.user
+*.svn
+*.fbx
+*.a
+*.o
+*.autosave
+
+build
+lib
+bin
+lib-debug
+00_INSTRUCTIONS/html
+00_ANSWERS
