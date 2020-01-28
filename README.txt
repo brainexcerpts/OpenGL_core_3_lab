@@ -15,9 +15,9 @@ The imported target "Qt5::Gui" references the file "Qt5Gui_EGL_LIBRARY-NOTFOUND"
 ==================
 More instructions
 ==================
-The assignments and compilation instructions are in "00_INSTURCTIONS/html/index.html "
-which are generated from "./00_INSTURCTIONS/lab_instructions/sujet-iig3d.h" you can run "./00_INSTURCTIONS/run build_doc.sh"
-under linux.
+The assignments and compilation instructions are in "00_INSTURCTIONS/html_english/html/index.html "
+which are generated from "./00_INSTURCTIONS/lab_instructions/main_page.h" you can run "./00_INSTURCTIONS/build_doc.sh"
+under linux (or use git bash under windows).
 
 The first assignment only requires to fill in the file src/rendersystem/renderer.cpp which contains a lot of explanations.
 
