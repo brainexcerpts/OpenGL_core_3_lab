@@ -1,4 +1,4 @@
 
-
+    - finish english translation for all the assignements
     - glm summary    
     - check gcc compilation
