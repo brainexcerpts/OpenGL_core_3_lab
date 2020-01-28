@@ -21,5 +21,5 @@ under linux.
 
 The first assignment only requires to fill in the file src/rendersystem/renderer.cpp which contains a lot of explanations.
 
-If your are a teacher the answers should be in the folder 00_ANSWERS
+If your are a teacher the answers should be in the folder 00_ANSWERS (or message me through github to get access to OpenGL_core_3_lab_answers)
 

@@ -9,5 +9,6 @@ build
 lib
 bin
 lib-debug
-00_INSTRUCTIONS/html
+00_INSTRUCTIONS/html_english
+00_INSTRUCTIONS/html_french
 00_ANSWERS

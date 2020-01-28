@@ -1,4 +1,4 @@
-﻿project(minimalRenderer)
+﻿project(minimal_renderer)
 
 cmake_minimum_required(VERSION 3.10.2) # Minimal version compatible QT5
 #CMAKE_POLICY(SET CMP0020 NEW) # This will silence the Cmake Warning "Policy CMP0020 is not set"
@@ -74,10 +74,12 @@ set(QT_LIBS ${Qt5Widgets_LIBRARIES} ${Qt5OpenGL_LIBRARIES} ${Qt5Core_LIBRARIES} 
 
 set(EXT_LIBS ${QT_LIBS} ${OPENGL_LIBRARIES})
 
-add_executable(minimalRenderer
+add_executable(minimal_renderer
                ${folder_source}
                ${folder_header}
                ${renderer_MOC_HDRS}
                )
 
-target_link_libraries(minimalRenderer ${EXT_LIBS} )
+target_link_libraries(minimal_renderer ${EXT_LIBS} )
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/doxygen_setup.cmake)
