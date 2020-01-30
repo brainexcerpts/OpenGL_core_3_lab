@@ -15,11 +15,14 @@ The imported target "Qt5::Gui" references the file "Qt5Gui_EGL_LIBRARY-NOTFOUND"
 ==================
 More instructions
 ==================
-The assignments and compilation instructions are in "00_INSTURCTIONS/html_english/html/index.html "
-which are generated from "./00_INSTURCTIONS/lab_instructions/main_page.h" you can run "./00_INSTURCTIONS/build_doc.sh"
-under linux (or use git bash under windows).
+The assignments and compilation instructions are in "00_INSTRUCTIONS/".
+You must run the script "./00_INSTURCTIONS/build_doc.sh" to generate html files
+such as "00_INSTURCTIONS/html_english/html/index.html". Tu run the script 
+Doxygen needs to be installed (git BASH is required as well for windows user since it's a bash script).
+
+Note: Html instructions files are generated from the source code and "./00_INSTURCTIONS/lab_instructions/****.h"
 
 The first assignment only requires to fill in the file src/rendersystem/renderer.cpp which contains a lot of explanations.
 
-If your are a teacher the answers should be in the folder 00_ANSWERS (or message me through github to get access to OpenGL_core_3_lab_answers) (not all instructions were translated, if you need the rest message me as well.)
+If your are a teacher the answers should be in the folder 00_ANSWERS (or message me through github to get access to OpenGL_core_3_lab_answers) (not all instructions were translated, if you need the rest please message me.)
 
