@@ -1,4 +1,4 @@
-/***************************************************************************
+﻿/***************************************************************************
  *   Copyright (C) 2012 by Mathias Paulin                                  *
  *   Mathias.Paulin@irit.fr                                                *
  *                                                                         *
@@ -25,9 +25,9 @@
   * Main function.
   * just creates GUI main window and launch interaction loop.
   */
-int main ( int argc, char *argv[] )
+int main(int argc, char* argv[])
 {
-    QApplication app ( argc, argv );
+    QApplication app(argc, argv);
 
     Gui::MainWindow* mw = new Gui::MainWindow();
     mw->show();
@@ -36,4 +36,3 @@ int main ( int argc, char *argv[] )
     //delete mw;
     return result;
 }
-

@@ -250,23 +250,24 @@ void Renderer::initShaders()
 
 //------------------------------------------------------------------------------
 
-/// Eraser shader programs
+/// Erase shader programs
 void Renderer::clearShaders()
 {
     // #########################################################################
     // LAB 1 / PART I: CODE TO COMPLETE
 
 
-    // 1 - Dissocier les shaders du program shader ( glDetachShader() )
+    // 1 - Detach shader programs ( glDetachShader() )
 
-    // 2 - Supprimer les shaders (vertex, fragment shaders) ( glDeleteShader() )
-    // N.B: si les shader ne sont pas détachés OpenGL se réserve le droit de ne
-    // pas les supprimer malgré l'appel à glDeleteShader() !
+    // 2 - Clean shaders (vertex, fragment shaders) ( glDeleteShader() )
+    // Note: if you don't detach shaders OpenGL might not actually delete
+    // shaders upon the call of glDeleteShader() !
 
-    // 3 - Supprimer le "programme shader"
-    // N.B: seul le programme shader est nécessaire pour dessiner un objet,
-    // on aurais pu supprimer les shaders dans la fonction initShaders()
-    // après le "linkage".
+    // 3 - delete the "program shader" itself
+    // Note: only the program shader is actually necessary to draw objects.
+    // The individual shaders are only necessary before linking. After linking
+    // and producing the final program we could have delete those individual
+    // shaders in initShaders().
 
 
     // LAB 1 / PART I:END CODE TO COMPLETE
