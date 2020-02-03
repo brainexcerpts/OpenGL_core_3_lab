@@ -16,11 +16,11 @@ The imported target "Qt5::Gui" references the file "Qt5Gui_EGL_LIBRARY-NOTFOUND"
 More instructions
 ==================
 The assignments and compilation instructions are in "00_INSTRUCTIONS/".
-You must run the script "./00_INSTURCTIONS/build_doc.sh" to generate html files
+You must run the script "./00_INSTRUCTIONS/build_doc.sh" to generate html files
 such as "00_INSTURCTIONS/html_english/html/index.html". Tu run the script 
 Doxygen needs to be installed (git BASH is required as well for windows user since it's a bash script).
 
-Note: Html instructions files are generated from the source code and "./00_INSTURCTIONS/lab_instructions/****.h"
+Note: Html instructions files are generated from the source code and "./00_INSTRUCTIONS/lab_instructions/****.h"
 
 The first assignment only requires to fill in the file src/rendersystem/renderer.cpp which contains a lot of explanations.
 
