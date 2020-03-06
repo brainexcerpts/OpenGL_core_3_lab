@@ -1,4 +1,4 @@
-﻿/***************************************************************************
+/***************************************************************************
  *   Copyright (C) 2012 by Mathias Paulin                                  *
  *   Mathias.Paulin@irit.fr                                                *
  *                                                                         *
@@ -85,36 +85,38 @@ public:
     }
 
     /// Destructor
-    virtual ~Renderer();
+    ~Renderer();
 
     /// VieViewport management.
-    virtual void setViewport(int width, int height);
+    void setViewport(int width, int height);
 
     /// Render the scene.
-    virtual void render();
+    void render();
+
+    void draw_list_mesh();
 
     /// Handle mouse event given by the vortexEngine
     /// @return 1 if event is understood and fully managed. 0 otherwise.
-    virtual int handleMouseEvent(const MouseEvent& event);
+    int handleMouseEvent(const MouseEvent& event);
 
     /// Handle key event given by the vortexEngine
     /// @return 1 if event is understood and fully managed. 0 otherwise.
-    virtual int handleKeyEvent(char key);
+    int handleKeyEvent(char key);
 
     /// Initialise all the resources needed for rendering : shaders, geometries, teture, ...
-    virtual void initRessources();
+    void initRessources();
 
     /// Initialise the viewing configuration
-    virtual void initView();
+    void initView();
 
     /// Initialise the geometric content
-    virtual void initGeometry();
+    void initGeometry();
 
     /// Initialise the shader configuration
-    virtual void initShaders();
+    void initShaders();
 
     /// Delete renderer's shaders
-    virtual void clearShaders();
+    void clearShaders();
 
     int width() const
     {
