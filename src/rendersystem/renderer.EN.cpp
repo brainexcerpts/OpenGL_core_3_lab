@@ -1,4 +1,4 @@
-﻿/***************************************************************************
+/***************************************************************************
  *   Copyright (C) 2012 by Mathias Paulin                                  *
  *   Mathias.Paulin@irit.fr                                                *
  *                                                                         *
@@ -359,46 +359,6 @@ void Renderer::render()
 }
 
 
-/// Load (from file) and upload to GPU (compile) the various meshes of our scene.
-/// (Called once when the application is launched)
-void Renderer::initGeometry()
-{
-
-    // #########################################################################
-    // LAB 1 / PART II: CODE TO COMPLETE
-
-
-    // Once PART I of lab 1 is finished and checked
-    // You can delete / disable the line below
-#if 1
-    // This builds a VAO (upload to GPU) with data for a triangle and a sphere.
-    // This is only here to test PART I without having to do PART II
-    init_dummy_object();
-#endif
-
-    // In this function we do not use OpenGL API functions. Our goal is
-    // to parse files containing our 3D objects, and upload in video memory.
-    // A parser is already available all is asked here is to explore this very
-    // project's code and find what you need.
-
-    // 1 - Build a vector of meshes (std::vector<loaders::Mesh*>)
-    // from the file "../data/camel.obj"
-    // You need to create a "loaders::obj_mtl::ObjLoader".
-    // and use the method ".load()" to parse an "camel.obj".
-    // If an error occurs print it.
-    // Retreive the parsed meshes with ".getObjects()"
-
-
-    // 2 - Convert the list of meshes to "MyGLMesh"
-    // (use this->mMeshes to store the converted objects)
-
-    // 3 - Upload to GPU with ".compileGL()"
-
-    // LAB 1 / PART II: END CODE TO COMPLETE
-    // #########################################################################
-}
-
-
 // -----------------------------------------------------------------------------
 
 /**
@@ -584,6 +544,62 @@ public:
     }
 };
 
+// -----------------------------------------------------------------------------
+
+/// Load (from file) and upload to GPU (compile) the various meshes of our scene.
+/// (Called once when the application is launched)
+void Renderer::initGeometry()
+{
+
+    // #########################################################################
+    // LAB 1 / PART II: CODE TO COMPLETE
+
+
+    // Once PART I of lab 1 is finished and checked
+    // You can delete / disable the line below
+#if 1
+    // This builds a VAO (upload to GPU) with data for a triangle and a sphere.
+    // This is only here to test PART I without having to do PART II
+    init_dummy_object();
+#endif
+
+    // In this function we do not use OpenGL API functions. Our goal is
+    // to parse files containing our 3D objects, and upload in video memory.
+    // A parser is already available all is asked here is to explore this very
+    // project's code and find what you need.
+
+    // 1 - Build a vector of meshes (std::vector<loaders::Mesh*>)
+    // from the file "../data/camel.obj"
+    // You need to create a "loaders::obj_mtl::ObjLoader".
+    // and use the method ".load()" to parse an "camel.obj".
+    // If an error occurs print it.
+    // Retreive the parsed meshes with ".getObjects()"
+
+
+    // 2 - Convert the list of meshes to "MyGLMesh"
+    // (use this->mMeshes to store the converted objects)
+
+    // 3 - Upload to GPU with ".compileGL()"
+
+    // LAB 1 / PART II: END CODE TO COMPLETE
+    // #########################################################################
+}
+
+// -----------------------------------------------------------------------------
+
+void Renderer::draw_list_mesh()
+{
+    // #########################################################################
+    // TP 1 / PARTIE II: Début du code à écrire
+
+    // 4 - Dessiner les objets de la scène dans l'attribut 'mMeshes':
+
+    for (std::vector<MyGLMesh*>::iterator it = mMeshes.begin(); it != mMeshes.end(); ++it ) {
+        (*it)->drawGL();
+    }
+    // TP 1 / PARTIE II: Fin du code à écrire
+    // #########################################################################
+}
 
 // -----------------------------------------------------------------------------
 
