@@ -318,6 +318,8 @@ void Renderer::render()
         mDummyObject->draw();
 #endif
     // 4 - Dessiner les objets de la scène dans l'attribut 'mMeshes':
+    draw_list_mesh();
+    
     // #####################################
     // TP 1 / PARTIE II:Fin du code à écrire
     // #####################################

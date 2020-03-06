@@ -351,8 +351,7 @@ void Renderer::render()
         mDummyObject->draw();
 #endif
     // 4 - Instead use 'this->mMeshes' to draw the object of the scene:
-
-    // ...
+    draw_list_mesh();
 
     // LAB 1 / PART II:END CODE TO COMPLETE
     // #########################################################################
@@ -590,14 +589,14 @@ void Renderer::initGeometry()
 void Renderer::draw_list_mesh()
 {
     // #########################################################################
-    // TP 1 / PARTIE II: Début du code à écrire
+    // LAB 1 / PARTIE II: 
 
     // 4 - Dessiner les objets de la scène dans l'attribut 'mMeshes':
 
     for (std::vector<MyGLMesh*>::iterator it = mMeshes.begin(); it != mMeshes.end(); ++it ) {
         (*it)->drawGL();
     }
-    // TP 1 / PARTIE II: Fin du code à écrire
+    // LAB 1 / PART II: 
     // #########################################################################
 }
 
