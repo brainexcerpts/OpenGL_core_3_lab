@@ -323,7 +323,7 @@ void Renderer::render()
     // #####################################
 }
 
-/**
+ /**
   * @ingroup RenderSystem
   * A mesh with OpenGL rendering capabilities.
   */
@@ -535,7 +535,7 @@ void Renderer::initGeometry()
     // TP 1 / PARTIE II: Fin du code à écrire
     // ######################################
 }
-
+ 
 // -----------------------------------------------------------------------------
 
 void Renderer::draw_list_mesh()
@@ -550,7 +550,7 @@ void Renderer::draw_list_mesh()
 }
 
 // -----------------------------------------------------------------------------
-
+ 
 int Renderer::handleMouseEvent(const MouseEvent& event)
 {
     //static int modifiers = 0;
