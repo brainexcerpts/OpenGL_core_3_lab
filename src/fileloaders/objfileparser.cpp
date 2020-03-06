@@ -34,6 +34,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
     while (!istream.eof() && std::getline(istream, line)) {
         ++line_number;
         std::istringstream stringstream(line);
+
         stringstream.unsetf(std::ios_base::skipws);
 
         stringstream >> std::ws;
@@ -58,7 +59,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                 float_type x, y, z;
                 char whitespace_v_x, whitespace_x_y, whitespace_y_z;
                 stringstream >> whitespace_v_x >> std::ws >> x >> whitespace_x_y >> std::ws >> y >> whitespace_y_z >> std::ws >> z >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_v_x) || !std::isspace(whitespace_x_y) || !std::isspace(whitespace_y_z)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_v_x) || !std::isspace(whitespace_x_y) || !std::isspace(whitespace_y_z)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -79,7 +80,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_v_w >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_vt_u) || !std::isspace(whitespace_u_v) || !std::isspace(whitespace_v_w)) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_vt_u) || !std::isspace(whitespace_u_v) || !std::isspace(whitespace_v_w)) {
                     if (error_callback_) {
                         std::string message = "parse error";
                         error_callback_(line_number, message);
@@ -95,7 +96,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                 else {
                     float_type w;
                     stringstream >> w >> std::ws;
-                    if (!stringstream || !stringstream.eof()) {
+                    if (/*!stringstream ||*/ !stringstream.eof()) {
                         if (error_callback_) {
                             error_callback_(line_number, "parse error");
                         }
@@ -122,7 +123,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                 float_type x, y, z;
                 char whitespace_vn_x, whitespace_x_y, whitespace_y_z;
                 stringstream >> whitespace_vn_x >> std::ws >> x >> whitespace_x_y >> std::ws >> y >> whitespace_y_z >> std::ws >> z >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_vn_x) || !std::isspace(whitespace_x_y) || !std::isspace(whitespace_y_z)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_vn_x) || !std::isspace(whitespace_x_y) || !std::isspace(whitespace_y_z)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -148,7 +149,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                     if (!stringstream.eof()) {
                         stringstream >> whitespace_v3_v4 >> std::ws;
                     }
-                    if (!stringstream || !std::isspace(whitespace_f_v1) || !std::isspace(whitespace_v1_v2) || !std::isspace(whitespace_v2_v3) || !std::isspace(whitespace_v3_v4)) {
+                    if (/*!stringstream ||*/ !std::isspace(whitespace_f_v1) || !std::isspace(whitespace_v1_v2) || !std::isspace(whitespace_v2_v3) || !std::isspace(whitespace_v3_v4)) {
                         if (error_callback_) {
                             error_callback_(line_number, "parse error");
                         }
@@ -186,7 +187,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                         if (!stringstream.eof()) {
                             stringstream >> whitespace_v4_v5 >> std::ws;
                         }
-                        if (!stringstream || !std::isspace(whitespace_v4_v5)) {
+                        if (/*!stringstream ||*/ !std::isspace(whitespace_v4_v5)) {
                             if (error_callback_) {
                                 error_callback_(line_number, "parse error");
                             }
@@ -249,7 +250,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                                         v_previous = v;
                                     }
                                 } while (stringstream && !stringstream.eof());
-                                if (!stringstream || !stringstream.eof()) {
+                                if (/*!stringstream ||*/ !stringstream.eof()) {
                                     if (error_callback_) {
                                         error_callback_(line_number, "parse error");
                                     }
@@ -288,7 +289,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                                         }
                                     }
                                 } while (stringstream && !stringstream.eof());
-                                if (!stringstream || !stringstream.eof()) {
+                                if (/*!stringstream ||*/ !stringstream.eof()) {
                                     if (error_callback_) {
                                         error_callback_(line_number, "parse error");
                                     }
@@ -317,7 +318,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                             if (!stringstream.eof()) {
                                 stringstream >> whitespace_vt3_v4 >> std::ws;
                             }
-                            if (!stringstream || !std::isspace(whitespace_f_v1) || !(slash_v1_vt1 == '/') || !std::isspace(whitespace_vt1_v2) || !(slash_v2_vt2 == '/') || !std::isspace(whitespace_vt2_v3) || !(slash_v3_vt3 == '/') || !std::isspace(whitespace_vt3_v4)) {
+                            if (/*!stringstream ||*/ !std::isspace(whitespace_f_v1) || !(slash_v1_vt1 == '/') || !std::isspace(whitespace_vt1_v2) || !(slash_v2_vt2 == '/') || !std::isspace(whitespace_vt2_v3) || !(slash_v3_vt3 == '/') || !std::isspace(whitespace_vt3_v4)) {
                                 if (error_callback_) {
                                     error_callback_(line_number, "parse error");
                                 }
@@ -368,7 +369,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                                 if (!stringstream.eof()) {
                                     stringstream >> whitespace_vt4_v5 >> std::ws;
                                 }
-                                if (!stringstream || !(slash_v4_vt4 == '/') || !std::isspace(whitespace_vt4_v5)) {
+                                if (/*!stringstream ||*/ !(slash_v4_vt4 == '/') || !std::isspace(whitespace_vt4_v5)) {
                                     if (error_callback_) {
                                         error_callback_(line_number, "parse error");
                                     }
@@ -446,7 +447,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                                                 v_previous = v, vt_previous = vt;
                                             }
                                         } while (stringstream && !stringstream.eof());
-                                        if (!stringstream || !stringstream.eof()) {
+                                        if (/*!stringstream ||*/ !stringstream.eof()) {
                                             if (error_callback_) {
                                                 error_callback_(line_number, "parse error");
                                             }
@@ -492,7 +493,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                                                 }
                                             }
                                         } while (stringstream && !stringstream.eof());
-                                        if (!stringstream || !stringstream.eof()) {
+                                        if (/*!stringstream ||*/ !stringstream.eof()) {
                                             if (error_callback_) {
                                                 error_callback_(line_number, "parse error");
                                             }
@@ -515,7 +516,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                             if (!stringstream.eof()) {
                                 stringstream >> whitespace_vn3_v4 >> std::ws;
                             }
-                            if (!stringstream || !std::isspace(whitespace_f_v1) || !(slash_v1_vt1 == '/') || !(slash_vt1_vn1 == '/') || !std::isspace(whitespace_vn1_v2) || !(slash_v2_vt2 == '/') || !(slash_vt2_vn2 == '/') || !std::isspace(whitespace_vn2_v3) || !(slash_v3_vt3 == '/') || !(slash_vt3_vn3 == '/') || !std::isspace(whitespace_vn3_v4)) {
+                            if (/*!stringstream ||*/ !std::isspace(whitespace_f_v1) || !(slash_v1_vt1 == '/') || !(slash_vt1_vn1 == '/') || !std::isspace(whitespace_vn1_v2) || !(slash_v2_vt2 == '/') || !(slash_vt2_vn2 == '/') || !std::isspace(whitespace_vn2_v3) || !(slash_v3_vt3 == '/') || !(slash_vt3_vn3 == '/') || !std::isspace(whitespace_vn3_v4)) {
                                 if (error_callback_) {
                                     error_callback_(line_number, "parse error");
                                 }
@@ -579,7 +580,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                                 if (!stringstream.eof()) {
                                     stringstream >> whitespace_vn4_v5 >> std::ws;
                                 }
-                                if (!stringstream || !(slash_v4_vt4 == '/') || !(slash_vt4_vn4 == '/') || !std::isspace(whitespace_vn4_v5)) {
+                                if (/*!stringstream ||*/ !(slash_v4_vt4 == '/') || !(slash_vt4_vn4 == '/') || !std::isspace(whitespace_vn4_v5)) {
                                     if (error_callback_) {
                                         error_callback_(line_number, "parse error");
                                     }
@@ -659,7 +660,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                                                 v_previous = v, vt_previous = vt, vn_previous = vn;
                                             }
                                         } while (stringstream && !stringstream.eof());
-                                        if (!stringstream || !stringstream.eof()) {
+                                        if (/*!stringstream ||*/ !stringstream.eof()) {
                                             if (error_callback_) {
                                                 error_callback_(line_number, "parse error");
                                             }
@@ -710,7 +711,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                                                 }
                                             }
                                         } while (stringstream && !stringstream.eof());
-                                        if (!stringstream || !stringstream.eof()) {
+                                        if (/*!stringstream ||*/ !stringstream.eof()) {
                                             if (error_callback_) {
                                                 error_callback_(line_number, "parse error");
                                             }
@@ -734,7 +735,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                         if (!stringstream.eof()) {
                             stringstream >> whitespace_vn3_v4 >> std::ws;
                         }
-                        if (!stringstream || !std::isspace(whitespace_f_v1) || !(slash_v1_vt1 == '/') || !(slash_vt1_vn1 == '/') || !std::isspace(whitespace_vn1_v2) || !(slash_v2_vt2 == '/') || !(slash_vt2_vn2 == '/') || !std::isspace(whitespace_vn2_v3) || !(slash_v3_vt3 == '/') || !(slash_vt3_vn3 == '/') || !std::isspace(whitespace_vn3_v4)) {
+                        if (/*!stringstream ||*/ !std::isspace(whitespace_f_v1) || !(slash_v1_vt1 == '/') || !(slash_vt1_vn1 == '/') || !std::isspace(whitespace_vn1_v2) || !(slash_v2_vt2 == '/') || !(slash_vt2_vn2 == '/') || !std::isspace(whitespace_vn2_v3) || !(slash_v3_vt3 == '/') || !(slash_vt3_vn3 == '/') || !std::isspace(whitespace_vn3_v4)) {
                             if (error_callback_) {
                                 error_callback_(line_number, "parse error");
                             }
@@ -785,7 +786,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                             if (!stringstream.eof()) {
                                 stringstream >> whitespace_vn4_v5 >> std::ws;
                             }
-                            if (!stringstream || !(slash_v4_vt4 == '/') || !(slash_vt4_vn4 == '/') || !std::isspace(whitespace_vn4_v5)) {
+                            if (/*!stringstream ||*/ !(slash_v4_vt4 == '/') || !(slash_vt4_vn4 == '/') || !std::isspace(whitespace_vn4_v5)) {
                                 if (error_callback_) {
                                     error_callback_(line_number, "parse error");
                                 }
@@ -857,7 +858,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                                             v_previous = v, vn_previous = vn;
                                         }
                                     } while (stringstream && !stringstream.eof());
-                                    if (!stringstream || !stringstream.eof()) {
+                                    if (/*!stringstream ||*/ !stringstream.eof()) {
                                         if (error_callback_) {
                                             error_callback_(line_number, "parse error");
                                         }
@@ -901,7 +902,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                                             }
                                         }
                                     } while (stringstream && !stringstream.eof());
-                                    if (!stringstream || !stringstream.eof()) {
+                                    if (/*!stringstream ||*/ !stringstream.eof()) {
                                         if (error_callback_) {
                                             error_callback_(line_number, "parse error");
                                         }
@@ -924,7 +925,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_mtllib_group_name >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_mtllib_group_name)) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_mtllib_group_name)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -939,7 +940,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                 else {
                     std::string group_name;
                     stringstream >> group_name >> std::ws;
-                    if (!stringstream || !stringstream.eof()) {
+                    if (/*!stringstream ||*/ !stringstream.eof()) {
                         if (error_callback_) {
                             error_callback_(line_number, "parse error");
                         }
@@ -957,7 +958,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                 std::string group_number_string;
                 char whitespace_mtllib_group_number;
                 stringstream >> whitespace_mtllib_group_number >> std::ws >> group_number_string >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_mtllib_group_number)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_mtllib_group_number)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -970,7 +971,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                 else {
                     std::istringstream stringstream(group_number_string);
                     stringstream >> group_number;
-                    if (!stringstream || !stringstream.eof()) {
+                    if (/*!stringstream ||*/ !stringstream.eof()) {
                         if (error_callback_) {
                             error_callback_(line_number, "parse error");
                         }
@@ -988,7 +989,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                 std::string object_name;
                 char whitespace_mtllib_object_name;
                 stringstream >> whitespace_mtllib_object_name >> std::ws >> object_name >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_mtllib_object_name)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_mtllib_object_name)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1004,8 +1005,14 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
             else if (keyword == "mtllib") {
                 std::string filename;
                 char whitespace_mtllib_filename;
+
+                //bool failbit = (stringstream.rdstate() & std::ifstream::failbit );
+
                 stringstream >> whitespace_mtllib_filename >> std::ws >> filename >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_mtllib_filename)) {
+
+                //failbit = (stringstream.rdstate() & std::ifstream::failbit );
+
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_mtllib_filename)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1022,7 +1029,7 @@ bool Obj_mtl::obj_parser::parse(std::istream& istream)
                 std::string material_name;
                 char whitespace_mtllib_material_name;
                 stringstream >> whitespace_mtllib_material_name >> std::ws >> material_name >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_mtllib_material_name)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_mtllib_material_name)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1094,7 +1101,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 std::string material_name;
                 char whitespace_mtllib_material_name;
                 stringstream >> whitespace_mtllib_material_name >> std::ws >> material_name >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_mtllib_material_name)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_mtllib_material_name)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1110,7 +1117,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 float_type r, g, b;
                 char whitespace_v_r, whitespace_r_g, whitespace_g_b;
                 stringstream >> whitespace_v_r >> std::ws >> r >> whitespace_r_g >> std::ws >> g >> whitespace_g_b >> std::ws >> b >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_v_r) || !std::isspace(whitespace_r_g) || !std::isspace(whitespace_g_b)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_v_r) || !std::isspace(whitespace_r_g) || !std::isspace(whitespace_g_b)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1126,7 +1133,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 float_type r, g, b;
                 char whitespace_v_r, whitespace_r_g, whitespace_g_b;
                 stringstream >> whitespace_v_r >> std::ws >> r >> whitespace_r_g >> std::ws >> g >> whitespace_g_b >> std::ws >> b >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_v_r) || !std::isspace(whitespace_r_g) || !std::isspace(whitespace_g_b)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_v_r) || !std::isspace(whitespace_r_g) || !std::isspace(whitespace_g_b)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1142,7 +1149,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 float_type r, g, b;
                 char whitespace_v_r, whitespace_r_g, whitespace_g_b;
                 stringstream >> whitespace_v_r >> std::ws >> r >> whitespace_r_g >> std::ws >> g >> whitespace_g_b >> std::ws >> b >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_v_r) || !std::isspace(whitespace_r_g) || !std::isspace(whitespace_g_b)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_v_r) || !std::isspace(whitespace_r_g) || !std::isspace(whitespace_g_b)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1158,7 +1165,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 float_type r, g, b;
                 char whitespace_v_r, whitespace_r_g, whitespace_g_b;
                 stringstream >> whitespace_v_r >> std::ws >> r >> whitespace_r_g >> std::ws >> g >> whitespace_g_b >> std::ws >> b >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_v_r) || !std::isspace(whitespace_r_g) || !std::isspace(whitespace_g_b)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_v_r) || !std::isspace(whitespace_r_g) || !std::isspace(whitespace_g_b)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1173,7 +1180,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 index_type i;
                 char whitespace_v_i;
                 stringstream >> whitespace_v_i >> std::ws >> i >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_v_i)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_v_i)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1190,7 +1197,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_dissolve_attribute >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_dissolve_attribute) || stringstream.eof()) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_dissolve_attribute) || stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1198,7 +1205,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 }
                 std::string dissolve_attribute;
                 stringstream >> dissolve_attribute >> std::ws;
-                if (!stringstream || !stringstream.eof()) {
+                if (/*!stringstream ||*/ !stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1213,7 +1220,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 float_type n;
                 char whitespace_v_n;
                 stringstream >> whitespace_v_n >> std::ws >> n >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_v_n)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_v_n)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1228,7 +1235,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 float_type n;
                 char whitespace_v_n;
                 stringstream >> whitespace_v_n >> std::ws >> n >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_v_n)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_v_n)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1243,7 +1250,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 float_type n;
                 char whitespace_v_n;
                 stringstream >> whitespace_v_n >> std::ws >> n >> std::ws;
-                if (!stringstream || !stringstream.eof() || !std::isspace(whitespace_v_n)) {
+                if (/*!stringstream ||*/ !stringstream.eof() || !std::isspace(whitespace_v_n)) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1260,7 +1267,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_map_attribute >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1269,7 +1276,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 std::string map_attribute;
                 //stringstream >> map_attribute >> std::ws;
                 getline(stringstream, map_attribute);
-                if (!stringstream || !stringstream.eof()) {
+                if (/*!stringstream ||*/ !stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1285,7 +1292,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_map_attribute >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1294,7 +1301,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 std::string map_attribute;
                 //stringstream >> map_attribute >> std::ws;
                 getline(stringstream, map_attribute);
-                if (!stringstream || !stringstream.eof()) {
+                if (/*!stringstream ||*/ !stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "map_Kd parse error");
                     }
@@ -1310,7 +1317,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_map_attribute >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1319,7 +1326,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 std::string map_attribute;
                 //stringstream >> map_attribute >> std::ws;
                 getline(stringstream, map_attribute);
-                if (!stringstream || !stringstream.eof()) {
+                if (/*!stringstream ||*/ !stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1335,7 +1342,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_map_attribute >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1344,7 +1351,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 std::string map_attribute;
                 //stringstream >> map_attribute >> std::ws;
                 getline(stringstream, map_attribute);
-                if (!stringstream || !stringstream.eof()) {
+                if (/*!stringstream ||*/ !stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1360,7 +1367,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_map_attribute >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1369,7 +1376,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 std::string map_attribute;
                 //stringstream >> map_attribute >> std::ws;
                 getline(stringstream, map_attribute);
-                if (!stringstream || !stringstream.eof()) {
+                if (/*!stringstream ||*/ !stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1385,7 +1392,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_map_attribute >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1394,7 +1401,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 std::string map_attribute;
                 //stringstream >> map_attribute >> std::ws;
                 getline(stringstream, map_attribute);
-                if (!stringstream || !stringstream.eof()) {
+                if (/*!stringstream ||*/ !stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1410,7 +1417,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_map_attribute >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1419,7 +1426,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 std::string map_attribute;
                 //stringstream >> map_attribute >> std::ws;
                 getline(stringstream, map_attribute);
-                if (!stringstream || !stringstream.eof()) {
+                if (/*!stringstream ||*/ !stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1435,7 +1442,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_map_attribute >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1444,7 +1451,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 std::string map_attribute;
                 //stringstream >> map_attribute >> std::ws;
                 getline(stringstream, map_attribute);
-                if (!stringstream || !stringstream.eof()) {
+                if (/*!stringstream ||*/ !stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1460,7 +1467,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_map_attribute >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1469,7 +1476,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 std::string map_attribute;
                 //stringstream >> map_attribute >> std::ws;
                 getline(stringstream, map_attribute);
-                if (!stringstream || !stringstream.eof()) {
+                if (/*!stringstream ||*/ !stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1485,7 +1492,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 if (!stringstream.eof()) {
                     stringstream >> whitespace_map_attribute >> std::ws;
                 }
-                if (!stringstream || !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
+                if (/*!stringstream ||*/ !std::isspace(whitespace_map_attribute) || stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }
@@ -1494,7 +1501,7 @@ bool Obj_mtl::mtl_parser::parse(std::istream& istream)
                 std::string map_attribute;
                 //stringstream >> map_attribute >> std::ws;
                 getline(stringstream, map_attribute);
-                if (!stringstream || !stringstream.eof()) {
+                if (/*!stringstream ||*/ !stringstream.eof()) {
                     if (error_callback_) {
                         error_callback_(line_number, "parse error");
                     }

@@ -27,6 +27,7 @@
  */
 
 #include <GL/glu.h>
+#include <iostream>
 
 #ifndef NDEBUG // debug mode
 
