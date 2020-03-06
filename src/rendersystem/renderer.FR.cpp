@@ -29,7 +29,8 @@
 
 /** @defgroup RendererGlobalFunctions
   * @author Mathias Paulin <Mathias.Paulin@irit.fr>
-  * (edited by Rodolphe Vaillant <vaillant@irit.fr>
+  * Rodolphe Vaillant <blog@rodolphe-vaillant.fr>
+  *
   * @ingroup RenderSystem
   * Global functions for the renderer.
   *
@@ -44,7 +45,7 @@ namespace RenderSystem {
 /// (appelée une fois au chargement de l'application)
 void Renderer::initRessources()
 {
-    // #######################################
+    // #########################################################################
     // TP 1 / PARTIE I: Début du code à écrire
     // #######################################
     // Dans ce TP les noms de fonctions sont donnés, mais pas leurs usage.
@@ -65,9 +66,9 @@ void Renderer::initRessources()
     // 2 - Positionner le mode de dessin (filaire ou plein glPolygonMode())
 
 
-    // #####################################
+
     // TP 1 / PARTIE I: Fin du code à écrire
-    // #####################################
+    // #########################################################################
 
 
     initGeometry(); // TP 1 / PARTIE II: Loading or building geometric data.
@@ -79,9 +80,9 @@ void Renderer::initRessources()
 /// (appelée une fois au chargement de l'application)
 void Renderer::initView()
 {
-    // #######################################
+    // #########################################################################
     // TP 1 / PARTIE I: Début du code à écrire
-    // #######################################
+
     // Initialiser la matrice de vue (attribut mViewMatrix)
     // à partir des indications :
     // position de vue (eye): 1.f, 0.f, 0.f
@@ -90,9 +91,9 @@ void Renderer::initView()
     // remplir l'attribut "mViewMatrix" en utilisant la fonction
     // "glm::lookAt()" pour calculer la matrice de vue correspondante
 
-    // #####################################
+
     // TP 1 / PARTIE I: Fin du code à écrire
-    // #####################################
+    // #########################################################################
 }
 
 // -----------------------------------------------------------------------------
@@ -111,8 +112,7 @@ void printShaderInfoLog(GLint shader)
         infoLog = new GLchar[infoLogLen];
         // error check for fail to allocate memory omitted
         glAssert(glGetShaderInfoLog(shader, infoLogLen, &charsWritten, infoLog));
-        std::cerr << "InfoLog:" << std::endl
-                  << infoLog << std::endl;
+        std::cerr << "InfoLog:" << std::endl << infoLog << std::endl;
         delete[] infoLog;
     }
 }
@@ -133,8 +133,7 @@ void printProgramInfoLog(GLint program)
         infoLog = new GLchar[infoLogLen];
         // error check for fail to allocate memory omitted
         glAssert(glGetProgramInfoLog(program, infoLogLen, &charsWritten, infoLog));
-        std::cerr << "InfoLog:" << std::endl
-                  << infoLog << std::endl;
+        std::cerr << "InfoLog:" << std::endl << infoLog << std::endl;
         delete[] infoLog;
     }
 }
@@ -145,9 +144,8 @@ void printProgramInfoLog(GLint program)
 void Renderer::initShaders()
 {
 
-    // #######################################
+    // #########################################################################
     // TP 1 / PARTIE I: Début du code à écrire
-    // #######################################
 
     // N.B: reportez vous régulièrement à un schéma du pipeline graphique
     // pour faire la correspondance entre ce que vous programmez ici et comment
@@ -194,7 +192,6 @@ void Renderer::initShaders()
     //   2.3 - Compiler le shader
     //   2.4 - Vérifier les erreurs de compilation
 
-
     // 3 - Programme :
     //   3.1 - Créer un "programme" OpenGl, stocker son identifiant dans l'attribut "mProgram"
     // et associer les shaders vertex shader et fragment shader (glCreateProgramm() glAttachShader() )
@@ -229,9 +226,9 @@ void Renderer::initShaders()
     //   3.4 - Vérifier les erreurs d'édition de lien
     // (glGetProgramiv() puis printProgramInfoLog() définie plus haut )
 
-    // #####################################
+
     // TP 1 / PARTIE I: Fin du code à écrire
-    // #####################################
+    // #########################################################################
 }
 
 //------------------------------------------------------------------------------
@@ -239,9 +236,8 @@ void Renderer::initShaders()
 /// Eraser shader programs
 void Renderer::clearShaders()
 {
-    // #######################################
-    // TP 1 / PARTIE I: Début du code à écrire
-    // #######################################
+    // #########################################################################
+    // TP 1 / PARTIE I: Début du code à écrire    
 
     // 1 - Dissocier les shaders du program shader ( glDetachShader() )
 
@@ -254,9 +250,9 @@ void Renderer::clearShaders()
     // on aurais pu supprimer les shaders dans la fonction initShaders()
     // après le "linkage".
 
-    // ####################################
+
     // TP 1 / PARTIE I:Fin du code à écrire
-    // ####################################
+    // #########################################################################
 }
 
 //------------------------------------------------------------------------------
@@ -268,59 +264,64 @@ void Renderer::render()
     // pour le premier TP pas de mouvement d'où la matrice identité.
     // le constructeur glm::mat4x4(float) fixe la valeur de la diagonale
     const glm::mat4x4 modelMatrix(1.0f); // <- matrice identité
+    // 1 0 0 0
+    // 0 1 0 0
+    // 0 0 1 0
+    // 0 0 0 1
 
-// #######################################
-// TP 1 / PARTIE I: Début du code à écrire
-// #######################################
+    // #########################################################################
+    // TP 1 / PARTIE I: Début du code à écrire
 
-// Fonction principale de calcul d'une image,
-// son rôle est de séquencer l'ensemble des ordres de dessin de l'API de bas niveau.
-// En d'autres termes d'appeler les fonctions OpenGl afin de réaliser le dessin
-// des objets de votre scène.
 
-// 1 -  Préparer l'image pour le rendu :
-//    1.1 - Effacer les buffers de destination (buffers de couleur ET profondeur) (glClearColor(), glClear())
+    // Fonction principale de calcul d'une image,
+    // son rôle est de séquencer l'ensemble des ordres de dessin de l'API de bas niveau.
+    // En d'autres termes d'appeler les fonctions OpenGl afin de réaliser le dessin
+    // des objets de votre scène.
 
-// 2 - Construire les matrices de vue et de projection :
-//    2.1 - Définir une matrice de projection perspective
-//          en utilisant glm::perspective(float fovy, float aspect, float zNear, float zFar)
-//          La fonction définie le volume de vision (frustum) de la camera.
-//          Google image mot clé "Frustum" vous donnera de magnifiques schémas
-//          Paramètres:
-//          field of view sur l'axe y = fovy en radian
-//          window_largeur/window_hauteur = aspect (svp n'oubliez pas la conversion en float...)
+    // 1 -  Préparer l'image pour le rendu :
+    //    1.1 - Effacer les buffers de destination (buffers de couleur ET profondeur) (glClearColor(), glClear())
 
-//    2.2 - Définir la matrice de vue à partir de mViewMatrix et de modelMatrix
+    // 2 - Construire les matrices de vue et de projection :
+    //    2.1 - Définir une matrice de projection perspective
+    //          en utilisant glm::perspective(float fovy, float aspect, float zNear, float zFar)
+    //          La fonction définie le volume de vision (frustum) de la camera.
+    //          Google image mot clé "Frustum" vous donnera de magnifiques schémas
+    //          Paramètres:
+    //          field of view sur l'axe y = fovy en radian
+    //          window_largeur/window_hauteur = aspect (svp n'oubliez pas la conversion en float...)
 
-//    2.3 - Calculer la matrice de transformation des normales
+    //    2.2 - Définir la matrice de vue à partir de mViewMatrix et de modelMatrix
 
-//    2.4 - Calculer la matrice MVP (acronyme de Model View Projection) qui passe un point du repère objet au repère image
+    //    2.3 - Calculer la matrice de transformation des normales
 
-// 3 - Activer et paramétrer les shader par défaut :
-//    3.1 - Activer le programme shader créée dans initShaders() (glUseProgram())
+    //    2.4 - Calculer la matrice MVP (acronyme de Model View Projection) qui passe un point du repère objet au repère image
 
-//    3.2 - Fixer les valeurs (variable uniform des shader) qui sont indépendantes par objet :
-//          les matrices des shader (c.f. voud devez regarder dans le code des shaders dossier /shader)
-//          doivent être initialisées (glGetUniformLocation() et glUniform()) avec celles calculées précédemment en mémoire CPU.
-//          Note: accéder au pointeur d'une matrice glm peut se faire en utilisant
-//          'float* ptr = glm::value_ptr(ma_matrice)'
+    // 3 - Activer et paramétrer les shader par défaut :
+    //    3.1 - Activer le programme shader créée dans initShaders() (glUseProgram())
 
-// ####################################
-// TP 1 / PARTIE I:Fin du code à écrire
-// ####################################
+    //    3.2 - Fixer les valeurs (variable uniform des shader) qui sont indépendantes par objet :
+    //          les matrices des shader (c.f. voud devez regarder dans le code des shaders dossier /shader)
+    //          doivent être initialisées (glGetUniformLocation() et glUniform()) avec celles calculées précédemment en mémoire CPU.
+    //          Note: accéder au pointeur d'une matrice glm peut se faire en utilisant
+    //          'float* ptr = glm::value_ptr(ma_matrice)'
 
-// #################
-// TP 1 / PARTIE II:
-// #################
-// Ne plus utiliser la fonction de dessin d'objets prédéfinis:
-#if 1
+
+    // TP 1 / PARTIE I:Fin du code à écrire
+    // #########################################################################
+
+    // #########################################################################
+    // TP 1 / PARTIE II:
+
+    // Ne plus utiliser la fonction de dessin d'objets prédéfinis:
+    #if 1
     if (mProgram != -1)
         mDummyObject->draw();
-#endif
+    #endif
     // 4 - Dessiner les objets de la scène dans l'attribut 'mMeshes':
-    // #####################################
+
     // TP 1 / PARTIE II:Fin du code à écrire
-    // #####################################
+    // #########################################################################
+
 }
 
 //-------------------------------------------
@@ -329,23 +330,18 @@ void Renderer::render()
 void Renderer::initGeometry()
 {
 
-// ########################################
-// TP 1 / PARTIE II: Début du code à écrire
-// ########################################
+    // #########################################################################
+    // TP 1 / PARTIE II: Début du code à écrire
 
-// Une fois la partie I finie et vérifier désactivé le code si dessous
-// et changeant la macro if de 1 vers 0
-#if 1
+
+    // Une fois la partie I finie et vérifier désactivé le code si dessous
+    // et changeant la macro if de 1 vers 0
+    #if 1
     // Construction d'un VAO contenant un triangle et une sphère.
     // Ce code est utile pour pouvoir tester le réglage du pipeline OpenGl
     // fait en Partie I sans devoir charger un maillage
     init_dummy_object();
-#endif
-
-    // ################
-    // TP 1 / PARTIE II
-    // ################
-
+    #endif
     // Le code de cette méthode ne nécessite pas de commandes OpenGl. Il s'agit
     // seulement de parser les fichiers contenant les objets 3D, puis de les
     // charger en mémoire vidéo.
@@ -366,9 +362,8 @@ void Renderer::initGeometry()
 
     // 3 - Faites l'upload vers GPU avec ".compileGL()"
 
-    // ######################################
     // TP 1 / PARTIE II: Fin du code à écrire
-    // ######################################
+    // #########################################################################
 }
 
 
@@ -388,13 +383,16 @@ private:
     GLuint mVertexBufferObjects[2];
 
     /// Index pour accéder mVertexBufferObjects[]
-    enum { VBO_VERTICES = 0,
-           VBO_INDICES = 1 };
+    enum { 
+        VBO_VERTICES = 0,
+        VBO_INDICES = 1 
+    };
 
 public:
     MyGLMesh(const Loaders::Mesh& mesh)
         : Loaders::Mesh(mesh)
     {
+
     }
 
     MyGLMesh(const std::vector<float>& vertexBuffer,
@@ -407,6 +405,7 @@ public:
                         hasNormals,
                         hasTextureCoords)
     {
+
     }
 
     /**
@@ -416,6 +415,7 @@ public:
       */
     void compileGL()
     {
+
         // Cette fonction a pour but de préparer les données du maillage afin
         // de l'afficher avec OpenGl. Pour ce faire vous devez charger
         // en mémoire vidéo (GPU) le maillage depuis la mémoire centrale
@@ -458,9 +458,8 @@ public:
             et remplir les champs se fera avec des fonctions du type glXXX().
         */
 
-        // ########################################
-        // TP 1 / PARTIE II: Début du code à écrire
-        // ########################################
+        // #########################################################################
+        // TP 1 / PARTIE II: Début du code à écrire        
 
         // 1 - Générez un identifiant pour un VertexArrayObject et le stocker
         // dans l'attribut mVertexArrayObject ( fonction  glGenVertexArrays() )
@@ -483,6 +482,12 @@ public:
         // de position (index 0), de normale (index 1) et de coordonnées
         // de texture (index 2) pour chaque sommet.
 
+        // position
+
+        // normal
+
+        // texcoord       
+
         // 7 - Activez les attributs (position, normale, coordonnée de texture) (glEnableVertexAttribArray)
 
         // 8 - Activez le VertexBufferObject contenant les faces.
@@ -493,10 +498,11 @@ public:
         // 9 - Remplir le VertexBufferObject contenant les faces
 
         // TP 1 / PARTIE II: Fin du code à écrire
+        // #########################################################################
 
         // Un bind sur l'index 0 est en fait un 'unBind()' garantissant qu'aucun
         // buffer n'est activé
-        glAssert(glBindVertexArray(0));
+        glAssert( glBindVertexArray(0) );
     }
 
     /// Draws the VertexArrayObjects (VAO "mVertexArrayObject") of the mesh.
@@ -504,9 +510,9 @@ public:
     {
         // Affiche le maillage chargé en mémoire vidéo en utilisant le VAO
 
-        // ########################################
+        // #########################################################################
         // TP 1 / PARTIE II: Début du code à écrire
-        // ########################################
+
         // 1 - Activer le VAO (bind)
 
         // 2 - Dessiner les triangles.
@@ -516,25 +522,26 @@ public:
         // pas le nombre de triangles mais la taille du tableau d'index de sommets
         // (c-a-d le nombre d'entiers dans le vertex buffer element VBE)
 
-        // ######################################
+
         // TP 1 / PARTIE II: Fin du code à écrire
-        // ######################################
+        // #########################################################################
     }
 
     /// Destructor
-    ~MyGLMesh()
+    virtual ~MyGLMesh()
     {
-        // ########################################
+        // #########################################################################
         // TP 1 / PARTIE II: Début du code à écrire
-        // ########################################
+
         // 1 - Supprimer VBO et VBE glDeleteBuffers()
 
         // 2 - Supprimer VAO glDeleteVertexArrays()
 
-        // ######################################
+
         // TP 1 / PARTIE II: Fin du code à écrire
-        // ######################################
+        // #########################################################################
     }
+
 };
 
 
@@ -564,9 +571,9 @@ int Renderer::handleMouseEvent(const MouseEvent& event)
         float dx = (float)(event.x - x) / (float)mWidth;
         float dy = (float)(event.y - y) / (float)mHeight;
 
-        // ##########################
+        // #########################################################################
         // TP2 Début du code à écrire
-        // ##########################
+
         switch (button) {
         case MouseEvent::LEFT: {
             float a = dx, b = dy;
@@ -586,9 +593,9 @@ int Renderer::handleMouseEvent(const MouseEvent& event)
             // 2 - Modifier mViewMatrix pour y ajouter une translation de zvec
         } break;
         }
-        // #########################
+
         // TP2 Fin du code à écrire
-        // #########################
+        // #########################################################################
 
         x = event.x;
         y = event.y;
@@ -617,7 +624,7 @@ void Renderer::setViewport(int width, int height)
 {
     mWidth = width;
     mHeight = height;
-    glAssert(glViewport(0, 0, mWidth, mHeight));
+    glAssert( glViewport(0, 0, mWidth, mHeight) );
 }
 
 // -----------------------------------------------------------------------------
@@ -627,11 +634,11 @@ int Renderer::handleKeyEvent(char key)
 
     switch (key) {
     case 'w':
-        glAssert(glPolygonMode(GL_FRONT_AND_BACK, GL_LINE));
-        break;
+        glAssert( glPolygonMode(GL_FRONT_AND_BACK, GL_LINE) );
+    break;
     case 'f':
-        glAssert(glPolygonMode(GL_FRONT_AND_BACK, GL_FILL));
-        break;
+        glAssert( glPolygonMode(GL_FRONT_AND_BACK, GL_FILL) );
+    break;
     }
     return 1;
 }
@@ -658,33 +665,35 @@ void Renderer::init_dummy_object()
 
     // On associe chaque attribut (position, normale, etc.) à un index (0, 1, etc.)
     // il faudra spécifier cet index au vertex shader ( dans "initShaders()" )
-    mDummyObject->set_attr_index(GlDirectDraw::ATTR_POSITION, 0);
-    mDummyObject->set_attr_index(GlDirectDraw::ATTR_NORMAL, 1);
-    mDummyObject->set_attr_index(GlDirectDraw::ATTR_TEX_COORD, 2);
+    mDummyObject->set_attr_index( GlDirectDraw::ATTR_POSITION , 0 );
+    mDummyObject->set_attr_index( GlDirectDraw::ATTR_NORMAL   , 1 );
+    mDummyObject->set_attr_index( GlDirectDraw::ATTR_TEX_COORD, 2 );
     mDummyObject->set_auto_flat_normals(true);
 
     // Construction des données du triangle
     mDummyObject->begin(GL_TRIANGLES);
-    mDummyObject->color3f(1.f, 0.f, 1.f);
-    mDummyObject->vertex3f(0.f, 0.f, 0.2f);
-    mDummyObject->vertex3f(0.f, 0.2f, 0.f);
-    mDummyObject->vertex3f(0.f, 0.f, -0.2f);
+    mDummyObject->color3f (1.f, 0.f, 1.f);
+    mDummyObject->vertex3f( 0.f, 0.f, 0.2f );
+    mDummyObject->vertex3f( 0.f, 0.2f, 0.f );
+    mDummyObject->vertex3f( 0.f, 0.f,-0.2f );
     mDummyObject->end();
 
     // Construction des données de la sphère
     mDummyObject->begin(GL_POINTS);
-    for (float u_ = 0; u_ < 1.f; u_ += 0.01f) {
-        for (float v_ = 0; v_ < 1.f; v_ += 0.01f) {
-            float u = u_ * (2. * M_PI);
+    for(float u_ = 0; u_ < 1.f; u_ += 0.01f)
+    {
+        for(float v_ = 0; v_ < 1.f; v_ += 0.01f)
+        {
+            float u  = u_ * (2. * M_PI);
             float v = v_ * M_PI;
 
             float scale = 0.5;
             float x = cos(u) * sin(v) * scale;
             float y = sin(u) * sin(v) * scale;
-            float z = cos(v) * scale;
+            float z = cos(v)          * scale;
 
-            mDummyObject->normal3f(x, y, z);
-            mDummyObject->vertex3f(x, y, z);
+            mDummyObject->normal3f( x, y, z );
+            mDummyObject->vertex3f( x, y, z );
         }
     }
     mDummyObject->end();
