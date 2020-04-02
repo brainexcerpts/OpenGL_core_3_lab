@@ -421,8 +421,8 @@ commands (draw calls) to tell OpenGl to begin to draw.
 @~french
 \subsection loadingGeometry Chargement et compilation des données géométriques de l'application.
 
-En utilisant la classe loaders::obj_mtl::ObjLoader de chargement de fichier Alias/Wavefront OBJ,
-charger l'objet  "../data/camel.obj" et stockez ses différentes composantes dans un vecteur (std::vector<loaders::Mesh*>).
+En utilisant la classe Loaders::obj_mtl::ObjLoader de chargement de fichier Alias/Wavefront OBJ,
+charger l'objet  "../data/camel.obj" et stockez ses différentes composantes dans un vecteur (std::vector<Loaders::Mesh*>).
 Transformez ces composantes en vecteur de primitives affichables en utilisant votre classe rendersystem::MyGLMesh.
 
 
@@ -430,9 +430,9 @@ Transformez ces composantes en vecteur de primitives affichables en utilisant vo
 @~english
 \subsection loadingGeometry Loading and compiling geometry
 
-Use loaders::obj_mtl::ObjLoader to load a Alias/Wavefront OBJ file
+Use Loaders::obj_mtl::ObjLoader to load a Alias/Wavefront OBJ file
 ("../data/camel.obj"). Store the various components of that file in a vector
-(std::vector<loaders::Mesh*>). Convert those components into drawable objects
+(std::vector<Loaders::Mesh*>). Convert those components into drawable objects
 thanks to rendersystem::MyGLMesh.
 
 

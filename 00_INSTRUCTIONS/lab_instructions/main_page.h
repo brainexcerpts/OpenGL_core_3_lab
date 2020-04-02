@@ -101,7 +101,7 @@
     mémoire des matrices).  Voir le site  <A HREF="http://glm.g-truc.net/">glm.g-truc.net</a>
     pour tout renseignements sur cette bibliothèque.
 
-    \li \c filelaoders contient le code source C++ nécessaire au
+    \li \c fileloaders contient le code source C++ nécessaire au
     chargement/parsing des fichiers d'objets 3D.  Le code de ce répertoire
     ne sera pas édité ou modifié pour les TPs mais uniquement utilisé et étendu.
 
@@ -131,7 +131,7 @@
     same specifications (e.g. memory alignement of vector and matrices).
     For documentation go see <A HREF="http://glm.g-truc.net/">glm.g-truc.net</a>
 
-    \li \c filelaoders C++ code to parse and load 3D object files.
+    \li \c fileloaders C++ code to parse and load 3D object files.
     No modification of those files will be required during the lab.
 
     \li \c gl_utils tool functions to improve OpenGl API usability

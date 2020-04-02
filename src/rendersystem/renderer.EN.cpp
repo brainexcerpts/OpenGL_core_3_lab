@@ -439,108 +439,108 @@ public:
 
         ElementBufferObject _list_of_triangles[NB_TRIS*3];
 
-    };
-    Well, OpenGL might not store things exactly like this VAOs but
-              this give you an idea. accessing the structure directly is not
-              possible you must use glXXX() accessors.
-              */
+		};
+		Well, OpenGL might not store things exactly like this VAOs but
+	    this give you an idea. accessing the structure directly is not
+	    possible you must use glXXX() accessors.
+	    */
 
-              // #####################################################################
-              // LAB 1 / PART II: CODE TO COMPLETE
-
-
-              // 1 - Create a VAO. Generate a unique identifier for a VertexArrayObject
-              // and store it in this->mVertexArrayObject
-              // ( glGenVertexArrays() )
-
-              // 2 - Create 2 VBOs. Generate two identifiers for VertexBufferObject
-              // (one for vertices VBO_VERTICES, another for faces (triangles) VBO_INDICES)
-              // save them in this->mVertexBufferObjects
-              // ( glGenBuffers() )
-
-              // 3 - Tell OpenGL which VAO we are currently working.
-              // Enable the previously created VertexArrayObject (VAO)
-              // ( glBindVertexArray() )
-
-              // 4 - Tell OpenGl which VBO we are currently working on. Enable the
-              // previously created VertexBufferObject *for vertices*
-              // (glBindBuffer())
-
-              // Note: VBO for vertex attributes
-              // (position, normal, speed, color, acceleration...) alway have the same
-              // type (i.e. GL_ARRAY_BUFFER)
-
-              // 5 - Fill the VertexBufferObject of vertices with
-              // (glBufferData())
-
-              // 6 - Describe the buffer memory layout / organization
-              // (glVertexAttribPointer())
-
-              // Note: You need to tell OpenGL how is organized your data.
-              // for instance associate
-              // - position      -> (index 0)
-              // - normal        -> (index 1)
-              // - texture coord -> (index 2)
-
-              // 7 - Enable which attributes are to be used (position, normal, etc.)
-              // (glEnableVertexAttribArray)
-
-              // 8 - Enable the VertexBufferObject *for faces*.
-              // Be careful this VBO is a list of faces therefore his type is GL_ELEMENT_ARRAY_BUFFER
-              // and not GL_ARRAY_BUFFER which is used for vertex attributes
-              // ...
-
-              // 9 - Fill VertexBufferObject *of faces*
-              // ...
-
-              // LAB 1 / PART II: END CODE TO COMPLETE
-              // #####################################################################
+	    // #####################################################################
+	    // LAB 1 / PART II: CODE TO COMPLETE
 
 
-              // Binding to 0 means 'unBind()' and garantees no buffer is enabled
-              glAssert(glBindVertexArray(0));
-}
+	    // 1 - Create a VAO. Generate a unique identifier for a VertexArrayObject
+	    // and store it in this->mVertexArrayObject
+	    // ( glGenVertexArrays() )
 
-/// Draw the VertexArrayObjects (VAO "mVertexArrayObject") of the mesh.
-void drawGL()
-{
-    // Draw the mesh loaded in video memory thanks to our VAO
+	    // 2 - Create 2 VBOs. Generate two identifiers for VertexBufferObject
+	    // (one for vertices VBO_VERTICES, another for faces (triangles) VBO_INDICES)
+	    // save them in this->mVertexBufferObjects
+	    // ( glGenBuffers() )
 
-    // #####################################################################
-    // LAB 1 / PART II: CODE TO COMPLETE
+	    // 3 - Tell OpenGL which VAO we are currently working.
+	    // Enable the previously created VertexArrayObject (VAO)
+	    // ( glBindVertexArray() )
+
+	    // 4 - Tell OpenGl which VBO we are currently working on. Enable the
+	    // previously created VertexBufferObject *for vertices*
+	    // (glBindBuffer())
+
+        // Note: VBO for vertex attributes
+	    // (position, normal, speed, color, acceleration...) alway have the same
+	    // type (i.e. GL_ARRAY_BUFFER)
+
+	    // 5 - Fill the VertexBufferObject of vertices with
+	    // (glBufferData())
+
+	    // 6 - Describe the buffer memory layout / organization
+	    // (glVertexAttribPointer())
+
+	    // Note: You need to tell OpenGL how is organized your data.
+	    // for instance associate
+	    // - position      -> (index 0)
+	    // - normal        -> (index 1)
+	    // - texture coord -> (index 2)
+
+	    // 7 - Enable which attributes are to be used (position, normal, etc.)
+	    // (glEnableVertexAttribArray)
+
+	    // 8 - Enable the VertexBufferObject *for faces*.
+	    // Be careful this VBO is a list of faces therefore his type is GL_ELEMENT_ARRAY_BUFFER
+	    // and not GL_ARRAY_BUFFER which is used for vertex attributes
+	    // ...
+
+	    // 9 - Fill VertexBufferObject *of faces*
+	    // ...
+
+	    // LAB 1 / PART II: END CODE TO COMPLETE
+	    // #####################################################################
 
 
-    // 1 - Enable the VAO (bind)
+	    // Binding to 0 means 'unBind()' and garantees no buffer is enabled
+	    glAssert(glBindVertexArray(0));
+	}
 
-    // 2 - Draw triangles.
-    // Les sommets des triangles étant indexés et non consécutifs (sauf cas très particulier)
-    // on utilisera la fonction glDrawElements(...)
+	/// Draw the VertexArrayObjects (VAO "mVertexArrayObject") of the mesh.
+	void drawGL()
+	{
+		// Draw the mesh loaded in video memory thanks to our VAO
 
-    // Watch out! The "count" parameter of glDrawElements() does not define
-    // the number of triangles but the actual size your index buffer.
-    // (i.e. the number of integers stored in your GL_ELEMENT_ARRAY_BUFFER)
-
-
-    // LAB 1 / PART II: END CODE TO COMPLETE
-    // #####################################################################
-}
-
-/// Destructor
-~MyGLMesh()
-{
-    // #####################################################################
-    // LAB 1 / PART II: CODE TO COMPLETE
-
-    // 1 - delete VBO and VBE
-    // glDeleteBuffers()
-
-    // 2 - Delete VAO
-    // glDeleteVertexArrays()
+		// #####################################################################
+		// LAB 1 / PART II: CODE TO COMPLETE
 
 
-    // LAB 1 / PART II: END CODE TO COMPLETE
-    // #####################################################################
-}
+		// 1 - Enable the VAO (bind)
+
+		// 2 - Draw triangles.
+		// Les sommets des triangles étant indexés et non consécutifs (sauf cas très particulier)
+		// on utilisera la fonction glDrawElements(...)
+
+		// Watch out! The "count" parameter of glDrawElements() does not define
+		// the number of triangles but the actual size your index buffer.
+		// (i.e. the number of integers stored in your GL_ELEMENT_ARRAY_BUFFER)
+
+
+		// LAB 1 / PART II: END CODE TO COMPLETE
+		// #####################################################################
+	}
+
+	/// Destructor
+	~MyGLMesh()
+	{
+		// #####################################################################
+		// LAB 1 / PART II: CODE TO COMPLETE
+
+		// 1 - delete VBO and VBE
+		// glDeleteBuffers()
+
+		// 2 - Delete VAO
+		// glDeleteVertexArrays()
+
+
+		// LAB 1 / PART II: END CODE TO COMPLETE
+		// #####################################################################
+	}
 };
 
 // -----------------------------------------------------------------------------
